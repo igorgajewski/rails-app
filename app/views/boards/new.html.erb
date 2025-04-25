@@ -1,0 +1,16 @@
+<h1>Create a Monday.com Board</h1>
+
+<%= form_with url: boards_path, method: :post, local: true do |form| %>
+  <div>
+    <%= form.label :name, "Board Name" %><br>
+    <%= form.text_field :name, required: true %>
+  </div>
+
+  <div>
+    <%= form.label :board_type, "Board Type" %><br>
+    <%= form.select :board_type, options_for_select([["Public", "public"], ["Private", "private"]]), required: true %>
+  </div>
+
+  <br>
+  <%= form.submit "Create Board" %>
+<% end %>
