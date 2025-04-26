@@ -21,22 +21,21 @@ class BoardsController < ApplicationController
     @boards = MondayService.get_boards
   end
 
-  def rename
-    board_id = params[:id]
-    @board = MondayService.get_board(board_id) # Fetch the board from the API
+
+  def edit
+    @board = MondayService.get_board(params[:id]) # assuming you have such a method, or reuse similar
   end
 
   def update
     board_id = params[:id]
     new_name = params[:name]
 
-    response = MondayService.rename_board(board_id, new_name)
-
-    if response
+    begin
+      MondayService.rename_board(board_id, new_name)
       redirect_to root_path, notice: "Board renamed to #{new_name}"
-    else
-      flash.now[:alert] = "Error renaming board"
-      render :rename
+    rescue => e
+      flash.now[:alert] = "Error renaming board: #{e.message}"
+      render :edit
     end
   end
 

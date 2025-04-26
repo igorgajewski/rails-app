@@ -1,7 +1,0 @@
-<h1>Rename Board</h1>
-
-<%= form_with url: board_path(@board['id']), method: :patch do |form| %>
-  <%= form.label :name, "Rename Board" %>
-  <%= form.text_field :name, value: @board['name'] %>
-  <%= form.submit "Rename" %>
-<% end %>

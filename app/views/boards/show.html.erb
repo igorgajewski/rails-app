@@ -27,5 +27,5 @@
     <li><%= owner["name"] %> (ID: <%= owner["id"] %>)</li>
   <% end %>
 </ul>
-
+<%= link_to "Edit Board", edit_board_path(@board["id"]), class: "btn btn-warning" %>
 <%= link_to "Return to Board List", root_path, class: "btn btn-primary" %>
