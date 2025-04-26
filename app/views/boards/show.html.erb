@@ -1,0 +1,31 @@
+<h1>Board Details</h1>
+
+<table class="table table-bordered">
+  <tbody>
+    <tr>
+      <th>ID</th>
+      <td><%= @board["id"] %></td>
+    </tr>
+    <tr>
+      <th>Name</th>
+      <td><%= @board["name"] %></td>
+    </tr>
+    <tr>
+      <th>Workspace ID</th>
+      <td><%= @board.dig("workspace", "id") %></td>
+    </tr>
+    <tr>
+      <th>Workspace Name</th>
+      <td><%= @board.dig("workspace", "name") %></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Owners</h2>
+<ul>
+  <% @board["owners"].each do |owner| %>
+    <li><%= owner["name"] %> (ID: <%= owner["id"] %>)</li>
+  <% end %>
+</ul>
+
+<%= link_to "Return to Board List", root_path, class: "btn btn-primary" %>

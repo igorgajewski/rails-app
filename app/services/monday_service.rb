@@ -48,7 +48,7 @@ class MondayService
 
       query = {
         query: "
-          { boards(ids: [#{board_id}]) { id name } }
+          { boards(ids: [#{board_id}]) { id name owners {id name} workspace{id name} } }
         "
       }
 
@@ -62,31 +62,21 @@ class MondayService
       end
     end
 
-
     def self.rename_board(board_id, new_name)
       api_token = ENV["MONDAY_API_TOKEN"]
       headers = { "Authorization" => api_token, "Content-Type" => "application/json" }
-
       query = {
-        query: "
-        mutation {
-          change_board_name(board_id: #{board_id}, board_name: \"#{new_name}\") {
-            id
-            name
-          }
-        }
-        "
+        query: "mutation {
+  update_board(board_id: #{board_id}, board_attribute: name, new_value: \"#{new_name}\")
+}"
       }
-
       response = post("", body: query.to_json, headers: headers)
-
-      if response && response["data"] && response["data"]["change_board_name"]
-        response["data"]["change_board_name"]
+      if response && response["data"] && response["data"]["update_board"]
+        true
       else
-        raise "Failed to rename board. Response: #{response.body}"
+        raise "Failed to update board. Response: #{response.body}"
       end
     end
-
 
     def self.delete_board(board_id)
       api_token = ENV["MONDAY_API_TOKEN"]
