@@ -2,12 +2,14 @@ require "test_helper"
 
 class BoardsControllerTest < ActionDispatch::IntegrationTest
   test "should get new" do
-    get boards_new_url
+    get new_board_path
     assert_response :success
   end
 
-  test "should get create" do
-    get boards_create_url
+  test "should create board" do
+    post boards_path, params: { name: "Test Board", board_type: "public" }
+    assert_response :redirect
+    follow_redirect!
     assert_response :success
   end
 end
