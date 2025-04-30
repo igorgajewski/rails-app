@@ -1,27 +1,4 @@
-<h1>All Boards</h1>
-
-<table class="table table-bordered table-striped">
-  <thead>
-    <tr>
-      <th>Board Name</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @boards.each do |board| %>
-      <tr>
-        <td><%= board['name'] %></td>
-        <td class="d-flex gap-2">
-          <%= button_to 'Details', board_path(board['id']), method: :get, class: "btn btn-secondary" %>
-
-
-          <%= button_to 'Delete', board_path(board['id']), method: :delete, data: { confirm: 'Are you sure you want to delete this board?' }, class: "btn btn-danger" %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-
-<%= link_to 'Create New Board', new_board_path, class: 'btn btn-success' %>
-
+<div class="container mt-4">
+    <h1>Welcome to the Dashboard</h1>
+    <p>This is your basic dashboard page. Customize it as needed!</p>
+</div>
