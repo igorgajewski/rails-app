@@ -8,7 +8,7 @@ class BoardsController < ApplicationController
     type = params[:board_type]
 
     begin
-      MondayService.create_board(name, type)
+      Monday::BoardsService.new.create_board(name, type)
       redirect_to root_path, notice: "Board created successfully"
     rescue => e
       flash.now[:alert] = "Error creating board: #{e.message}"
@@ -18,12 +18,17 @@ class BoardsController < ApplicationController
 
   # Show all boards
   def index
-    @boards = MondayService.get_boards
+    @boards = Monday::BoardsService.new.get_boards
+
+    respond_to do |format|
+      format.html # renders index.html.erb
+      format.json { render json: @workspaces }
+    end
   end
 
 
   def edit
-    @board = MondayService.get_board(params[:id]) # assuming you have such a method, or reuse similar
+    @board = Monday::BoardsService.new.get_board(params[:id]) # assuming you have such a method, or reuse similar
   end
 
   def update
@@ -31,8 +36,8 @@ class BoardsController < ApplicationController
     new_name = params[:name]
 
     begin
-      MondayService.rename_board(board_id, new_name)
-      redirect_to root_path, notice: "Board renamed to #{new_name}"
+      Monday::BoardsService.new.rename_board(board_id, new_name)
+      redirect_to boards_path, notice: "Board renamed to #{new_name}"
     rescue => e
       flash.now[:alert] = "Error renaming board: #{e.message}"
       render :edit
@@ -45,8 +50,8 @@ class BoardsController < ApplicationController
     board_id = params[:id]
 
     begin
-      MondayService.delete_board(board_id)
-      redirect_to root_path, notice: "Board deleted successfully"
+      Monday::BoardsService.new.delete_board(board_id)
+      redirect_to boards_path, notice: "Board deleted successfully"
     rescue => e
       flash.now[:alert] = "Error deleting board: #{e.message}"
       render :index
@@ -54,7 +59,12 @@ class BoardsController < ApplicationController
   end
 
   def show
-    @board = MondayService.get_board(params[:id])
+    @board = Monday::BoardsService.new.get_board(params[:id])
+
+    respond_to do |format|
+      format.html # renders index.html.erb
+      format.json { render json: @workspaces }
+    end
   end
 
   private

@@ -1,0 +1,71 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.monday.com/v2/
+    body:
+      encoding: UTF-8
+      string: '{"query":"{ boards { id name } }"}'
+    headers:
+      Authorization:
+      - "<MONDAY_API_TOKEN>"
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 01 May 2025 20:08:08 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Api-Router:
+      - 'true'
+      Api-Version:
+      - 2025-04
+      Vary:
+      - accept-encoding
+      - origin
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Envoy-Upstream-Service-Time:
+      - '261'
+      Content-Security-Policy:
+      - ";"
+      Content-Security-Policy-Report-Only:
+      - frame-ancestors https://*.monday.com; script-src 'self'; worker-src 'self';
+        connect-src 'self'; report-uri https://o916138.ingest.us.sentry.io/api/4507803872198656/security/?sentry_key=8e1fb7e952d4abfd146752c94791f51a&sentry_environment=production;
+      X-Monday-Rgn:
+      - use1
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - __cf_bm=XBgukvZ1bJmVi33FygCIvefAFg6n43LYjiY5XiA8vkk-1746130088-1.0.1.1-6OqNrG0Hp1fn1PSRPL6aYaDEKDbqI4Koxblv5rztMd3kXXM1PR6TTcZqwI8oGUnlKkX.zYL0NGjT4q7hzEFMuk8qFbOgDNE4FcCkQT3S3cv1RWt2YS_V.HJvLUWn_1wP;
+        path=/; expires=Thu, 01-May-25 20:38:08 GMT; domain=.monday.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=UeVhfyUdFRppNNqb.U7_R60JKfoli0h4HRF6ETRl4w4-1746130088380-0.0.1.1-604800000;
+        path=/; domain=.monday.com; HttpOnly; Secure; SameSite=None
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9391e8b9cd12bf36-WAW
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"boards":[{"id":"9050982180","name":"Mark Twain"},{"id":"9050974752","name":"Alice
+        Johnson"},{"id":"9050949479","name":"whateverrrr"},{"id":"9024882330","name":"john
+        doe"}]}}'
+  recorded_at: Thu, 01 May 2025 20:08:08 GMT
+recorded_with: VCR 6.3.1

@@ -1,0 +1,24 @@
+<h1>All Workspaces</h1>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Workspace Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @workspaces.each do |workspace| %>
+            <tr>
+                <td><%= workspace['name'] %></td>
+                <td class="d-flex gap-2">
+                    <%= button_to 'Details', workspace_path(workspace['id']), method: :get, class: "btn btn-secondary" %>
+
+                    <%= button_to 'Delete', workspace_path(workspace['id']), method: :delete, data: { confirm: 'Are you sure you want to delete this workspace?' }, class: "btn btn-danger" %>
+                </td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+
+<%= link_to 'Create New Workspace', new_workspace_path, class: 'btn btn-success' %>

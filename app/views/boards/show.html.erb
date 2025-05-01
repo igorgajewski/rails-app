@@ -6,26 +6,43 @@
       <th>ID</th>
       <td><%= @board["id"] %></td>
     </tr>
+
     <tr>
       <th>Name</th>
       <td><%= @board["name"] %></td>
     </tr>
+
     <tr>
       <th>Workspace ID</th>
       <td><%= @board.dig("workspace", "id") %></td>
     </tr>
+
     <tr>
       <th>Workspace Name</th>
       <td><%= @board.dig("workspace", "name") %></td>
     </tr>
+
+    <tr>
+      <th>Owners</th>
+      <td>
+        <ul>
+          <% @board["owners"].each do |owner| %>
+            <li><%= owner["name"] %> (ID: <%= owner["id"] %>)</li>
+          <% end %>
+        </ul>
+      </td>
+    </tr>
+
+    <tr>
+      <th>Items</th>
+      <td>
+        <ul>
+          <% @board["items_page"]["items"].each do |item| %>
+            <li><%= item["name"] %> (ID: <%= item["id"] %>)</li>
+          <% end %>
+        </ul>
+    </tr>
   </tbody>
 </table>
-
-<h2>Owners</h2>
-<ul>
-  <% @board["owners"].each do |owner| %>
-    <li><%= owner["name"] %> (ID: <%= owner["id"] %>)</li>
-  <% end %>
-</ul>
 <%= link_to "Edit Board", edit_board_path(@board["id"]), class: "btn btn-warning" %>
-<%= link_to "Return to Board List", root_path, class: "btn btn-primary" %>
+<%= link_to "Return to Board List", boards_path, class: "btn btn-primary" %>

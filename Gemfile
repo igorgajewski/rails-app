@@ -2,6 +2,7 @@ source "https://rubygems.org"
 
 gem "httparty"
 gem "dotenv-rails", groups: [ :development, :test ]
+gem "faraday"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 8.0.2"
@@ -58,6 +59,8 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "mocha"
+  gem "vcr"
+gem "webmock"
 end
 
 gem "importmap-rails", "~> 2.1"

@@ -1,19 +1,19 @@
-<h1>Create a Monday.com Board</h1>
+
 
 <%= form_with url: boards_path, method: :post, local: true do |form| %>
+<h2>Create a new Board</h2>
+<hr/>
+  <dl class="row">
+    <dt class="col-sm-2"><%= form.label :name, "Board Name", class: "form-label" %></dt>
+    <dd class="col-sm-10">
+      <%= form.text_field :name, required: true, class: "form-control", style: "max-width: 400px;" %>
+    </dd>
 
+    <dt class="col-sm-2"><%= form.label :board_type, "Board Type", class: "form-label" %></dt>
+    <dd class="col-sm-10">
+      <%= form.select :board_type, options_for_select([["Select Board Type", ""], ["public", "public"], ["private", "private"]]), {}, class: "form-select", style: "max-width: 400px;" %>  </dl>
 
-  <div class="mb-3">
-    <%= form.label :name, "Board Name", class: "form-label" %>
-    <%= form.text_field :name, required: true, class: "form-control" %>
-  </div>
-
-  <div class="mb-3">
-    <%= form.label :board_type, "Board Type", class: "form-label" %>
-    <%= form.select :board_type, options_for_select([["Public", "public"], ["Private", "private"]]), required: true, class: "form-select" %>
-  </div>
-
-  <%= form.submit "Create Board", class: "btn btn-success" %>
+  <%= form.submit "Create Board", class: "btn btn-success mt-3" %>
 <% end %>
 
 <%= link_to "Return to Board List", root_path, class: "btn btn-secondary mt-3" %>

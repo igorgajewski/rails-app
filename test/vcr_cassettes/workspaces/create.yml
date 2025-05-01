@@ -1,0 +1,137 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.monday.com/v2/
+    body:
+      encoding: UTF-8
+      string: '{"query":"\n          mutation {\n            create_workspace (name:
+        \"New Workspace\", description: \"Test description\", kind: open) {\n              id\n              name\n            }\n          }\n        "}'
+    headers:
+      Authorization:
+      - "<MONDAY_API_TOKEN>"
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 01 May 2025 20:08:06 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Api-Router:
+      - 'true'
+      Api-Version:
+      - 2025-04
+      Vary:
+      - accept-encoding
+      - origin
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Envoy-Upstream-Service-Time:
+      - '425'
+      Content-Security-Policy:
+      - ";"
+      Content-Security-Policy-Report-Only:
+      - frame-ancestors https://*.monday.com; script-src 'self'; worker-src 'self';
+        connect-src 'self'; report-uri https://o916138.ingest.us.sentry.io/api/4507803872198656/security/?sentry_key=8e1fb7e952d4abfd146752c94791f51a&sentry_environment=production;
+      X-Monday-Rgn:
+      - use1
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - __cf_bm=XYMgQs.11gWiHCZZqNENPKxc9kTikElrq1t.mduEIVE-1746130086-1.0.1.1-Yyf01o.V41oq.gAFqm0h8DUcjImZmTlZBldqStaWCBfviiGzj2y2vRD9XeSH7dn.y6P0EEsRSaPCoG4ycfjq29tT9yKFA50qx_V9NGTqSG62WQCbc9iUylQvjylxe1.F;
+        path=/; expires=Thu, 01-May-25 20:38:06 GMT; domain=.monday.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=9H6a1EOj.bo_Oblnr_NHUxj6Em0piOXG3VmmlTccfZ8-1746130086053-0.0.1.1-604800000;
+        path=/; domain=.monday.com; HttpOnly; Secure; SameSite=None
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9391e8aa2d4034f1-WAW
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"create_workspace":{"id":"10849465","name":"New Workspace"}}}'
+  recorded_at: Thu, 01 May 2025 20:08:06 GMT
+- request:
+    method: post
+    uri: https://api.monday.com/v2/
+    body:
+      encoding: UTF-8
+      string: '{"query":"{ workspaces { id name } }"}'
+    headers:
+      Authorization:
+      - "<MONDAY_API_TOKEN>"
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 01 May 2025 20:08:06 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Api-Router:
+      - 'true'
+      Api-Version:
+      - 2025-04
+      Vary:
+      - accept-encoding
+      - origin
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Envoy-Upstream-Service-Time:
+      - '204'
+      Content-Security-Policy:
+      - ";"
+      Content-Security-Policy-Report-Only:
+      - frame-ancestors https://*.monday.com; script-src 'self'; worker-src 'self';
+        connect-src 'self'; report-uri https://o916138.ingest.us.sentry.io/api/4507803872198656/security/?sentry_key=8e1fb7e952d4abfd146752c94791f51a&sentry_environment=production;
+      X-Monday-Rgn:
+      - use1
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - __cf_bm=uSjbkx84uELmBjxb1TiFQ6NAMRQEqxfWSqaZb2joWN0-1746130086-1.0.1.1-spDU254V7v9e9sOd8YG33VySMLkAnvW9qFE3M1NYBFa4s.UCpFvbmXLnBLYGCQRT5q0XAGrQNISJzJvDLMd8hpaH1V_TGTDki4eArosrhbCqZ_GrIRGq3SM_n2RhCu24;
+        path=/; expires=Thu, 01-May-25 20:38:06 GMT; domain=.monday.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=ITTzhrSLnlE3nf12V6LPs4h5C84Z1ZNi61AEprKkR3o-1746130086462-0.0.1.1-604800000;
+        path=/; domain=.monday.com; HttpOnly; Secure; SameSite=None
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 9391e8ae08c6bf2f-WAW
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"workspaces":[{"id":"10849465","name":"New Workspace"},{"id":"10849009","name":"Bob
+        Smith"},{"id":"10782788","name":"Main workspace"}]}}'
+  recorded_at: Thu, 01 May 2025 20:08:06 GMT
+recorded_with: VCR 6.3.1
