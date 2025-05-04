@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    @boards = Monday::MondayService.get_boards
+    @boards = Monday::BoardsService.new.get_boards
   end
 end
